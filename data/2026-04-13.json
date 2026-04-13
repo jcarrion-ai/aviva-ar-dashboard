@@ -1,0 +1,96 @@
+{
+  "run_date": "2026-04-13",
+  "period": "April 2026",
+  "totals": {
+    "residents": 72,
+    "flagged": 7,
+    "total_ar": 2365.14,
+    "past_due": 694.52
+  },
+  "communities": {
+    "Aviva Woodlands": {
+      "residents": 72,
+      "flagged": 7,
+      "ar": 2365.14,
+      "past_due": 694.52
+    }
+  },
+  "flagged": [
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Olson, Rebecca   \"Becky\" (00006440)",
+      "unit": "305 - Single",
+      "net_due": 1814.52,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Gaddis, Mary (00006966)",
+      "unit": "175 - Single",
+      "net_due": 390.0,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Krejci, Ronald (00006903)",
+      "unit": "310 - Single",
+      "net_due": 95.0,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Morris, Saundra (t0003074)",
+      "unit": "215 - Single",
+      "net_due": 80.0,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Neddenriep, Shirley (t0000202)",
+      "unit": "212 - Single",
+      "net_due": 50.0,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Caauwe, Caroline (00005461)",
+      "unit": "306 - Single",
+      "net_due": 40.0,
+      "worst_bucket": "30+ Days",
+      "flags": [
+        "30+ Days Past Due",
+        "Partial Payer"
+      ]
+    },
+    {
+      "community": "Aviva Woodlands",
+      "resident": "Albers, Ruth (00006943)",
+      "unit": "218 - Single",
+      "net_due": -1620.0,
+      "worst_bucket": "Current",
+      "flags": [
+        "Credit Balance >$500"
+      ]
+    }
+  ]
+}
