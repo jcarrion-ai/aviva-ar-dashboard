@@ -29,6 +29,23 @@
   tr.sev2 { background:#F4B084; }
   tr.sev1 { background:#FFEB9C; }
   .footer { text-align:center; color:#57606a; font-size:12px; margin-top:32px; }
+  .tabs { display:flex; flex-wrap:wrap; gap:2px; margin:20px 0 0 0;
+           border-bottom:2px solid #d0d7de; }
+  .tab { background:none; border:none; padding:10px 14px; cursor:pointer;
+          font-size:13px; color:#57606a; border-bottom:3px solid transparent;
+          margin-bottom:-2px; font-family:inherit; display:inline-flex;
+          align-items:center; }
+  .tab:hover { color:#1F4E79; background:#eef2f7; }
+  .tab.active { color:#1F4E79; border-bottom-color:#1F4E79; font-weight:600;
+                 background:white; }
+  .tab-panel { display:none; padding-top:20px; }
+  .tab-panel.active { display:block; }
+  .badge { background:#C00000; color:white; border-radius:10px;
+            padding:1px 7px; font-size:11px; margin-left:6px; font-weight:600; }
+  @media (max-width: 700px) {
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .grid2 { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -50,13 +67,13 @@
         <div class="val red">$695</div></div>
   </div>
 
+  <div class="tabs"><button class="tab active" data-tab="all">All Properties</button><button class="tab" data-tab="aviva-woodlands">Aviva Woodlands<span class="badge">7</span></button><button class="tab" data-tab="aviva-river-bend">Aviva River Bend</button><button class="tab" data-tab="aviva-port-st-lucie">Aviva Port St. Lucie</button><button class="tab" data-tab="aviva-maybelle-carter">Aviva Maybelle Carter</button><button class="tab" data-tab="aviva-west-hartford">Aviva West Hartford</button><button class="tab" data-tab="aviva-valparaiso">Aviva Valparaiso</button><button class="tab" data-tab="aviva-hills">Aviva Hills</button><button class="tab" data-tab="aviva-glendale">Aviva Glendale</button><button class="tab" data-tab="aviva-granbury">Aviva Granbury</button><button class="tab" data-tab="aviva-country-club-heights">Aviva Country Club Heights</button><button class="tab" data-tab="aviva-baldwin-park">Aviva Baldwin Park</button><button class="tab" data-tab="aviva-merrillville">Aviva Merrillville</button></div>
+  <div class="panels">
+<div class="tab-panel active" id="panel-all">
   <div class="grid2">
-    <div class="panel"><h2>AR by Community</h2>
-      <canvas id="ar_chart" height="280"></canvas></div>
-    <div class="panel"><h2>Past Due by Community</h2>
-      <canvas id="pd_chart" height="280"></canvas></div>
+    <div class="panel"><h2>AR by Community</h2><canvas id="ar_chart" height="280"></canvas></div>
+    <div class="panel"><h2>Past Due by Community</h2><canvas id="pd_chart" height="280"></canvas></div>
   </div>
-
   <div class="panel">
     <h2>Top 10 Highest-Risk Residents</h2>
     <table>
@@ -65,19 +82,234 @@
       <tbody><tr class="sev1"><td>Aviva Woodlands</td><td>Olson, Rebecca   "Becky" (00006440)</td><td>305 - Single</td><td class="num">$1,814.52</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Aviva Woodlands</td><td>Gaddis, Mary (00006966)</td><td>175 - Single</td><td class="num">$390.00</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Aviva Woodlands</td><td>Krejci, Ronald (00006903)</td><td>310 - Single</td><td class="num">$95.00</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Aviva Woodlands</td><td>Morris, Saundra (t0003074)</td><td>215 - Single</td><td class="num">$80.00</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Aviva Woodlands</td><td>Neddenriep, Shirley (t0000202)</td><td>212 - Single</td><td class="num">$50.00</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Aviva Woodlands</td><td>Caauwe, Caroline (00005461)</td><td>306 - Single</td><td class="num">$40.00</td><td>30+ Days</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev0"><td>Aviva Woodlands</td><td>Albers, Ruth (00006943)</td><td>218 - Single</td><td class="num">$-1,620.00</td><td>Current</td><td>Credit Balance >$500</td></tr></tbody>
     </table>
   </div>
-
   <div class="panel">
     <h2>Community Roll-Up</h2>
     <table>
       <thead><tr><th>Community</th><th>Residents</th><th>Flagged</th>
-      <th class="num">Total AR</th><th class="num">Past Due</th>
-      <th>% Past Due</th></tr></thead>
+      <th class="num">Total AR</th><th class="num">Past Due</th><th>% Past Due</th></tr></thead>
       <tbody><tr><td>Aviva Woodlands</td><td>72</td><td>7</td><td class="num">$2,365.14</td><td class="num">$694.52</td><td>29.4%</td></tr></tbody>
     </table>
   </div>
+</div>
+<div class="tab-panel" id="panel-aviva-woodlands">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1001op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">72</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val red">7</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$2,365</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$695</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Woodlands — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr class="sev1"><td>Olson, Rebecca   "Becky" (00006440)</td><td>305 - Single</td><td>Olson, Rebecca  (90047385)</td><td class="num">$1,814.52</td><td class="num">$1,250.00</td><td class="num">$564.52</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Gaddis, Mary (00006966)</td><td>175 - Single</td><td>Gaddis, Ronald  (90048903)</td><td class="num">$390.00</td><td class="num">$370.00</td><td class="num">$20.00</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Krejci, Ronald (00006903)</td><td>310 - Single</td><td>Krejci, Jeff  (90048728)</td><td class="num">$95.00</td><td class="num">$15.00</td><td class="num">$80.00</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Morris, Saundra (t0003074)</td><td>215 - Single</td><td>Morris, Saundra  (90022987)</td><td class="num">$80.00</td><td class="num">$70.00</td><td class="num">$10.00</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Neddenriep, Shirley (t0000202)</td><td>212 - Single</td><td>Neddenriep, Shirley  (90000247)</td><td class="num">$50.00</td><td class="num">$40.00</td><td class="num">$10.00</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev1"><td>Caauwe, Caroline (00005461)</td><td>306 - Single</td><td>Morgan, Kathy  (90044377)</td><td class="num">$40.00</td><td class="num">$30.00</td><td class="num">$10.00</td><td>30+ Days Past Due, Partial Payer</td></tr><tr class="sev0"><td>Hedges, Ned (00006909)</td><td>184 - Single</td><td>Hedges, Ned  (90048740)</td><td class="num">$1,165.64</td><td class="num">$1,165.64</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kreifels, Janet (00007076)</td><td>314 - Single</td><td>Kreifels, Janet  (90049471)</td><td class="num">$159.99</td><td class="num">$159.99</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Haes, Julius "Bud" (00006178)</td><td>209 - Single</td><td>Haes, Jay  (90046615)</td><td class="num">$85.00</td><td class="num">$85.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Haes, Darline (00006184)</td><td>209 - Second Resident</td><td>Haes, Jay  (90046615)</td><td class="num">$65.00</td><td class="num">$65.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kadavy, "Rose Marie" (00006837)</td><td>204 - Single</td><td>Kadavy, Todd  (90048541)</td><td class="num">$20.00</td><td class="num">$20.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Pedersen, William (00006289)</td><td>307 - Single</td><td>Pedersen, Karen  (90046945)</td><td class="num">$20.00</td><td class="num">$20.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Bates, William (00004000)</td><td>224 - Single</td><td>Bates, Jill  (90040802)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Bellin, Theodore (00003439)</td><td>207 - Single</td><td>Bellin, Clark  (90039299)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Berens, Lawrence (00002552)</td><td>124 - Single</td><td>Smith, Sandra (Sandy)  (90036751)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Berens, Lawrence (00002552)</td><td>124 - Single</td><td>Berens, Rod  (90034333)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Bohaty, Darlene (00005998)</td><td>201 - Single</td><td>Bohaty, Darlene  (90046050)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Burback, Jeanne (t0000113)</td><td>109 - Single</td><td>Grant, Judy  (90001115)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Caldwell, Linda (t0000220)</td><td>323 - Single</td><td>Caldwell, Bob  (90000621)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Christiansen, Joel (00006008)</td><td>174 - Single</td><td>Christiansen, Jeb  (90046074)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Craig, Robert (00003325)</td><td>213 - Single</td><td>Craig, Robert  (90038909)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Craig, Sandy (00003324)</td><td>213 - Second Resident</td><td>Craig, Robert  (90038909)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Criner, Lana (00003309)</td><td>181 - Single</td><td>Criner, Lana  (90038823)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Crogg, Sandra (00006959)</td><td>176 - Single</td><td>Crogg finanial POA and, Brian  (90048884)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Donner, Carolyn (00005990)</td><td>324 - Single</td><td>Donner, Tim  (90046015)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Emswiler, Beverly (00006989)</td><td>214 - Second Resident</td><td>Latimer, Jill  (90049188)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Emswiler, Glen (00006699)</td><td>214 - Single</td><td>Emswiler, Glen  (90048126)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Fiala, Marla (00003497)</td><td>101 - Single</td><td>Fiala, Debra  (90039467)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Foltz, Shirley (t0000410)</td><td>317 - Single</td><td>Foltz, Shirley  (90000543)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Foltz, Shirley (t0000410)</td><td>317 - Single</td><td>Foltz, Ron  (90000544)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Forsberg, Nancy (t0000382)</td><td>308 - Single</td><td>Forsberg, Larry  (90000502)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Forsberg, Nancy (t0000382)</td><td>308 - Single</td><td>Forsberg, Nancy  (90000503)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Gaddis, Ronald (00006967)</td><td>175 - Second Resident</td><td>Gaddis, Ronald  (90048903)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Grenseman, Betty (t0000089)</td><td>126 - Single</td><td>Grenseman, Jill  (90001088)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Griepenstroh, Kathleen (00006437)</td><td>183 - Single</td><td>Wehling, Carol  (90047431)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Haes, Darline (00006184)</td><td>209 - Second Resident</td><td>Haes, Darline  (90046622)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Hain, Marylee (00001735)</td><td>321 - Single</td><td>Beckman, Megan  (90022933)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Hansen, Helen (00003351)</td><td>134 - Single</td><td>Hansen, Keith  (90039003)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Hedges, Eola (t0006932)</td><td>184 - Single</td><td>Hedges, Ned  (90048740)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Helsing, Ronald (00006729)</td><td>106 - Single</td><td>Helsing, Ronald  (90048202)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Hildreth, Patsy (00004014)</td><td>108 - Single</td><td>Hildreth, Palmer  (90040844)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Hugelman, Larry (00006066)</td><td>325 - Single</td><td>Martin, Jamie  (90046238)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Humlicek, Gene (00006727)</td><td>228 - Single</td><td>Humlicek, Tom  (90048293)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Humlicek, Karen (00006728)</td><td>228 - Second Resident</td><td>Humlicek, Tom  (90048294)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Humlicek, Karen (00006728)</td><td>228 - Second Resident</td><td>Humlicek, Gene  (90048200)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Irons, Judy (00004078)</td><td>105 - Single</td><td>Moyer, Janice  (90041052)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Irons, Judy (00004078)</td><td>105 - Single</td><td>Irons, Judy  (90041051)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Jensen, Vivian (00003366)</td><td>217 - Single</td><td>Jensen, Vivian  (90039041)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Johnson, Glen (00006733)</td><td>179 - Second Resident</td><td>Johnson, Mike  (90048305)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Johnson, Judith (00006732)</td><td>179 - Single</td><td>Johnson, Mike  (90048300)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Johnson, Marleen (00003428)</td><td>203 - Single</td><td>Lehr, Kay  (90039252)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Johnson, Marleen (00003428)</td><td>203 - Single</td><td>Johnson, Marleen  (90039251)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kadavy, "Rose Marie" (00006837)</td><td>204 - Single</td><td>Kadavy, Rose  (90048538)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kissinger, Donna (00006653)</td><td>222 - Second Resident</td><td>Peaslee, Marilynn  (90048002)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kissinger, Robert (00006652)</td><td>222 - Single</td><td>Peaslee, Marilynn  (90048002)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kissinger, Robert (00006652)</td><td>222 - Single</td><td>Kissinger, Robert  (90048001)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Klameth, Leo (00006926)</td><td>225 - Single</td><td>Klameth, Leo  (90048785)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Kohl, Jerome (t0000120)</td><td>102 - Single</td><td>Lamer, Lori  (90001124)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Krejci, Ronald (00006903)</td><td>310 - Single</td><td>Krejci, Ronald  (90048722)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Krueger, Doloris   "Dee" (00006901)</td><td>103 - Second Resident</td><td>Krueger, Steve  (90048706)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Krueger, Donald  "Don" (00006900)</td><td>103 - Single</td><td>Krueger, Steve  (90048706)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Lippold, Kathryn (00001627)</td><td>123 - Single</td><td>Hash, Julie  (90021102)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Mach, Beverly (00007019)</td><td>125 - Single</td><td>Mach, Jeff  (90049303)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Martz, Viola (t0000315)</td><td>132 - Single</td><td>Martz, Jeff  (90000796)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Mills, Norma (00006566)</td><td>122 - Double A</td><td>Mills, Norma  (90047745)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Mills, Norma (00006566)</td><td>122 - Double A</td><td>Nelson, Craig  (90047882)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Mohrhoff, Diane (00006574)</td><td>318 - Single</td><td>Mohrhoff, Diane  (90047770)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Oehlerking, Carolyn (t0006809)</td><td>216 - Second Resident</td><td>Oehlerking, Walter  (90048403)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Oehlerking, Walter (00006774)</td><td>216 - Single</td><td>Oehlerking, Walter  (90048403)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Perkins, Marlene (00005825)</td><td>205 - Single</td><td>Pope, Malia  (90045592)</td><td class="num">$0.00</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Humlicek, Gene (00006727)</td><td>228 - Single</td><td>Humlicek, Gene  (90048200)</td><td class="num">$-0.01</td><td class="num">$0.00</td><td class="num">$0.00</td><td>—</td></tr><tr class="sev0"><td>Albers, Ruth (00006943)</td><td>218 - Single</td><td>McKinney, Deb  (90048840)</td><td class="num">$-1,620.00</td><td class="num">$-1,620.00</td><td class="num">$0.00</td><td>Credit Balance >$500</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-river-bend">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1002op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva River Bend — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-port-st-lucie">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1003op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Port St. Lucie — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-maybelle-carter">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1004op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Maybelle Carter — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-west-hartford">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1005op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva West Hartford — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-valparaiso">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1006op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Valparaiso — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-hills">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1007op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Hills — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-glendale">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1008op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Glendale — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-granbury">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1009op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Granbury — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-country-club-heights">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1010op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Country Club Heights — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-baldwin-park">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1011op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Baldwin Park — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="tab-panel" id="panel-aviva-merrillville">
+  <div class="kpis">
+    <div class="card"><div class="label">Code</div><div class="val" style="font-size:18px">1111op</div></div>
+    <div class="card"><div class="label">Residents</div><div class="val">0</div></div>
+    <div class="card"><div class="label">Flagged</div><div class="val ">0</div></div>
+    <div class="card"><div class="label">Total AR</div><div class="val">$0</div></div>
+    <div class="card"><div class="label">Past Due</div><div class="val red">$0</div></div>
+  </div>
+  <div class="panel">
+    <h2>Aviva Merrillville — Residents</h2>
+    <table>
+      <thead><tr><th>Resident</th><th>Unit</th><th>Payer</th>
+      <th class="num">Net Due</th><th class="num">Current</th>
+      <th class="num">Past Due</th><th>Flags</th></tr></thead>
+      <tbody><tr><td colspan="7" style="text-align:center;color:#8b949e;padding:24px;"><em>No residents with open balances this week.</em></td></tr></tbody>
+    </table>
+  </div>
+</div></div>
 
   <div class="footer">
-    Generated by Cowork AR Monitor — update weekly every Monday at 7am CT
+    Generated by Cowork AR Monitor — updates weekly every Monday at 7am CT
   </div>
 </div>
 <script>
@@ -95,6 +327,15 @@ new Chart(document.getElementById('pd_chart'), {
   data: { labels:L, datasets:[{ label:'Past Due ($)', data:pd, backgroundColor:'#C00000' }] },
   options:{ plugins:{legend:{display:false}},
              scales:{ y:{ beginAtZero:true, ticks:{ callback:v=>'$'+v.toLocaleString() } } } }
+});
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(e => e.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(e => e.classList.remove('active'));
+    btn.classList.add('active');
+    const target = document.getElementById('panel-' + btn.dataset.tab);
+    if (target) target.classList.add('active');
+  });
 });
 </script>
 </body></html>
